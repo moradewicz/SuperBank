@@ -1,0 +1,185 @@
+﻿@model IEnumerable<BankApp_V2_MVC.Models.Przelew>
+
+@{
+    ViewBag.Title = "HIstoria";
+}
+
+<h3 class ="widget-title">Historia</h3>
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-2 ">
+            <div class="btn-group btn-group-vertical ">
+                @Html.ActionLink(" Rachunki", "Index", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Dodaj nowy rachunek ", "Rachunki", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Wykonaj Przelew", "WykonajPrzelew", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Historia przelewów", "Historia", "Przelewy", null, new { @class = "btn btn-default" })
+
+            </div>
+        </div>
+        <div class="col-md-10 ">
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Historia
+                    </h3>
+                </div>
+
+                <div class="panel-footer">
+
+
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Typ transakcji</th>
+                                <th>Opis transakcji</th>
+                                <th>Kwota</th>
+                                <th>Saldo po transakcji</th>
+                                <th>PDF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                // przelwanie miedzy walsnymi kontami
+                                if (item.KontoId.Equals(item.KontoIDOdbiorcy))
+                                {
+                                    <tr>
+                                        <td>@item.Date </td>
+
+
+                                        <td>
+                                            <span style="font-size: 85.5%;"> Przelew z konta własnego: </span>
+                                            <br />
+                                            @item.NumerKontaNadawcy
+                                            <br />
+                                            <span style="font-size: 85.5%;">na konto własne:</span>
+                                            <br />
+                                            @item.NumerKontaOdbiorcy
+                                        </td>
+
+
+
+                                        <td>
+                                            <center> <strong>Numer rachunku:</strong></center>
+
+                                            <center> @item.NumerKontaOdbiorcy</center>
+
+                                            <center><strong>Dane adr. rach.:</strong> </center>
+
+                                            <center> @item.Imie @item.Nazwisko</center>
+
+                                            <center> @item.Ulica @item.Nr_domu</center>
+
+                                            <center> @item.Miasto @item.Kod_pocztowy</center>
+
+                                            <strong>Tytuł:</strong> @item.Tytul
+                                        </td>
+
+
+
+                                        <td> <span style="color:#808080"> @item.Kwota </span> </td>
+
+
+                                        <td>
+                                            ---
+                                        </td>
+
+                                        <td>
+                                            @Html.ActionLink("PDF !", "PDF", "Przelewy", new { przelewID = @item.Przelew_ID }, new { @class = "iconPDF" })
+                                         
+                                        </td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    //// Normalne
+                                    <tr>
+                                        <td>@item.Date </td>
+
+                                        @if (item.UserId.Equals((string)ViewBag.CurrentUserID))
+                                        {
+                                            <td>
+                                                <span style="font-size: 85.5%;">   Przelew z konta : </span>
+                                                <br />
+                                                @item.NumerKontaNadawcy
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <span style="font-size: 85.5%;">  Przelew na konto </span>
+                                                <br />
+                                                @item.NumerKontaOdbiorcy
+                                            </td>
+                                        }
+
+                                        <td>
+                                            <center> <strong>Numer rachunku:</strong></center>
+
+                                            <center> @item.NumerKontaOdbiorcy</center>
+
+                                            <center><strong>Dane adr. rach.:</strong> </center>
+
+                                            <center> @item.Imie @item.Nazwisko</center>
+
+                                            <center> @item.Ulica @item.Nr_domu</center>
+
+                                            <center> @item.Miasto @item.Kod_pocztowy</center>
+
+                                            <strong>Tytuł:</strong> @item.Tytul
+                                        </td>
+
+                                        @if (item.UserId.Equals((string)ViewBag.CurrentUserID))
+                                        {
+
+                                            <td> <span style="color:red">- @item.Kwota </span> </td>
+                                        }
+                                        else
+                                        {
+                                            <td> <span style="color:green">+ @item.Kwota PLN </span></td>
+                                        }
+
+
+                                        <td>
+                                            @if (item.SaldoPo >= 0)
+                                            {
+                                                <span style="color:green"> + @item.SaldoPoOdbiorcy </span>
+                                            }
+                                            else
+                                            {
+                                                <span style="color:red"> - @item.SaldoPo </span>
+                                            }
+
+
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("PDF !", "PDF", "Przelewy", new { przelewID = @item.Przelew_ID }, new { @class = "iconPDF" })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+
+                    </table>
+
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-4 ">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,739 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BankAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DaneKlientow">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Nr_konta" Type="nvarchar" MaxLength="26" Nullable="false" />
+          <Property Name="Imie" Type="nchar" MaxLength="10" />
+          <Property Name="Nazwisko" Type="nchar" MaxLength="15" />
+          <Property Name="Pesel" Type="nchar" MaxLength="11" />
+          <Property Name="Ulica" Type="nchar" MaxLength="30" />
+          <Property Name="Nr_domu" Type="nchar" MaxLength="5" />
+          <Property Name="Kod_pocztowy" Type="nchar" MaxLength="5" />
+          <Property Name="Miasto" Type="nchar" MaxLength="20" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Konto">
+          <Key>
+            <PropertyRef Name="KontoId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="KontoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Saldo" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Status" Type="nchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Kredyty">
+          <Key>
+            <PropertyRef Name="KredytID" />
+          </Key>
+          <Property Name="KredytID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nchar" MaxLength="128" />
+          <Property Name="Saldo" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Rata" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Okres" Type="int" />
+          <Property Name="DataZawarcia" Type="datetime" />
+          <Property Name="DataZamkniecia" Type="datetime" />
+          <Property Name="Status" Type="nchar" MaxLength="100" />
+          <Property Name="oprocentowanie" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="zostalorat" Type="int" />
+        </EntityType>
+        <EntityType Name="Lokaty">
+          <Key>
+            <PropertyRef Name="LokataID" />
+          </Key>
+          <Property Name="LokataID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nchar" MaxLength="128" Nullable="false" />
+          <Property Name="Saldo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OkresTrwania" Type="int" />
+          <Property Name="OprocentowanieLokaty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DataOtwarcia" Type="datetime" />
+          <Property Name="DataWyga" Type="datetime" />
+          <Property Name="DataNajNaliczeniaOdsetek" Type="datetime" />
+          <Property Name="NaliczoneOdsetki" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="KontoID" Type="int" />
+          <Property Name="Status" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Przelew">
+          <Key>
+            <PropertyRef Name="Przelew_ID" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="KontoId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Typ" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Tytul" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Ulica" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nr_domu" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Kod_pocztowy" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Miasto" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Kwota" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Przelew_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumerKontaOdbiorcy" Type="int" Nullable="false" />
+          <Property Name="NumerKontaNadawcy" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="SaldoPo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="KontoIDOdbiorcy" Type="nvarchar" MaxLength="128" />
+          <Property Name="SaldoPoOdbiorcy" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_AspNetUserLogins_DaneKlientow">
+          <End Role="DaneKlientow" Type="Self.DaneKlientow" Multiplicity="1" />
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneKlientow">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Konto_DaneKlientow">
+          <End Role="DaneKlientow" Type="Self.DaneKlientow" Multiplicity="0..1" />
+          <End Role="Konto" Type="Self.Konto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneKlientow">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Konto">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Przelew_Konto1">
+          <End Role="Konto" Type="Self.Konto" Multiplicity="1" />
+          <End Role="Przelew" Type="Self.Przelew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konto">
+              <PropertyRef Name="KontoId" />
+            </Principal>
+            <Dependent Role="Przelew">
+              <PropertyRef Name="NumerKontaNadawcy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BankAppModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DaneKlientow" EntityType="Self.DaneKlientow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Konto" EntityType="Self.Konto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kredyty" EntityType="Self.Kredyty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lokaty" EntityType="Self.Lokaty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Przelew" EntityType="Self.Przelew" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AspNetUserLogins_DaneKlientow" Association="Self.FK_AspNetUserLogins_DaneKlientow">
+            <End Role="DaneKlientow" EntitySet="DaneKlientow" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Konto_DaneKlientow" Association="Self.FK_Konto_DaneKlientow">
+            <End Role="DaneKlientow" EntitySet="DaneKlientow" />
+            <End Role="Konto" EntitySet="Konto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Przelew_Konto1" Association="Self.FK_Przelew_Konto1">
+            <End Role="Konto" EntitySet="Konto" />
+            <End Role="Przelew" EntitySet="Przelew" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BankAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DaneKlientow" Relationship="Self.FK_AspNetUserLogins_DaneKlientow" FromRole="AspNetUserLogins" ToRole="DaneKlientow" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="DaneKlientow">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Nr_konta" Type="String" MaxLength="26" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imie" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Pesel" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="Ulica" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Nr_domu" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Kod_pocztowy" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Miasto" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_AspNetUserLogins_DaneKlientow" FromRole="DaneKlientow" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Konto" Relationship="Self.FK_Konto_DaneKlientow" FromRole="DaneKlientow" ToRole="Konto" />
+        </EntityType>
+        <EntityType Name="Konto">
+          <Key>
+            <PropertyRef Name="KontoId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="KontoId" Type="Int32" Nullable="false" />
+          <Property Name="Saldo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DaneKlientow" Relationship="Self.FK_Konto_DaneKlientow" FromRole="Konto" ToRole="DaneKlientow" />
+          <NavigationProperty Name="Przelew" Relationship="Self.FK_Przelew_Konto1" FromRole="Konto" ToRole="Przelew" />
+          <Property Name="Status" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Przelew">
+          <Key>
+            <PropertyRef Name="Przelew_ID" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="KontoId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Typ" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tytul" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imie" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ulica" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nr_domu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kod_pocztowy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Miasto" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kwota" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Przelew_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumerKontaOdbiorcy" Type="Int32" Nullable="false" />
+          <Property Name="NumerKontaNadawcy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Konto" Relationship="Self.FK_Przelew_Konto1" FromRole="Przelew" ToRole="Konto" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SaldoPo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="KontoIDOdbiorcy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SaldoPoOdbiorcy" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserLogins_DaneKlientow">
+          <End Role="DaneKlientow" Type="Self.DaneKlientow" Multiplicity="1" />
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneKlientow">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Konto_DaneKlientow">
+          <End Role="DaneKlientow" Type="Self.DaneKlientow" Multiplicity="0..1" />
+          <End Role="Konto" Type="Self.Konto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneKlientow">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Konto">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Przelew_Konto1">
+          <End Role="Konto" Type="Self.Konto" Multiplicity="1" />
+          <End Role="Przelew" Type="Self.Przelew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konto">
+              <PropertyRef Name="KontoId" />
+            </Principal>
+            <Dependent Role="Przelew">
+              <PropertyRef Name="NumerKontaNadawcy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BankAppEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="DaneKlientow" EntityType="Self.DaneKlientow" />
+          <EntitySet Name="Konto" EntityType="Self.Konto" />
+          <EntitySet Name="Przelew" EntityType="Self.Przelew" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserLogins_DaneKlientow" Association="Self.FK_AspNetUserLogins_DaneKlientow">
+            <End Role="DaneKlientow" EntitySet="DaneKlientow" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Konto_DaneKlientow" Association="Self.FK_Konto_DaneKlientow">
+            <End Role="DaneKlientow" EntitySet="DaneKlientow" />
+            <End Role="Konto" EntitySet="Konto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Przelew_Konto1" Association="Self.FK_Przelew_Konto1">
+            <End Role="Konto" EntitySet="Konto" />
+            <End Role="Przelew" EntitySet="Przelew" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Lokaty" EntityType="BankAppModel.Lokaty" />
+          <EntitySet Name="Kredyty" EntityType="BankAppModel.Kredyty" />
+        </EntityContainer>
+        <EntityType Name="Lokaty">
+          <Key>
+            <PropertyRef Name="LokataID" />
+          </Key>
+          <Property Name="LokataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="true" Unicode="true" />
+          <Property Name="Saldo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OkresTrwania" Type="Int32" />
+          <Property Name="OprocentowanieLokaty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DataOtwarcia" Type="DateTime" Precision="3" />
+          <Property Name="DataWyga" Type="DateTime" Precision="3" />
+          <Property Name="DataNajNaliczeniaOdsetek" Type="DateTime" Precision="3" />
+          <Property Name="NaliczoneOdsetki" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="KontoID" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Kredyty">
+          <Key>
+            <PropertyRef Name="KredytID" />
+          </Key>
+          <Property Name="KredytID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="true" Unicode="true" />
+          <Property Name="Saldo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Rata" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Okres" Type="Int32" />
+          <Property Name="DataZawarcia" Type="DateTime" Precision="3" />
+          <Property Name="DataZamkniecia" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="oprocentowanie" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="zostalorat" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BankAppModelStoreContainer" CdmEntityContainer="BankAppEntities1">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="BankAppModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="BankAppModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="BankAppModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="BankAppModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="BankAppModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DaneKlientow">
+            <EntityTypeMapping TypeName="BankAppModel.DaneKlientow">
+              <MappingFragment StoreEntitySet="DaneKlientow">
+                <ScalarProperty Name="Nr_konta" ColumnName="Nr_konta" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Pesel" ColumnName="Pesel" />
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="Nr_domu" ColumnName="Nr_domu" />
+                <ScalarProperty Name="Kod_pocztowy" ColumnName="Kod_pocztowy" />
+                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Konto">
+            <EntityTypeMapping TypeName="BankAppModel.Konto">
+              <MappingFragment StoreEntitySet="Konto">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="KontoId" ColumnName="KontoId" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Przelew">
+            <EntityTypeMapping TypeName="BankAppModel.Przelew">
+              <MappingFragment StoreEntitySet="Przelew">
+                <ScalarProperty Name="SaldoPoOdbiorcy" ColumnName="SaldoPoOdbiorcy" />
+                <ScalarProperty Name="KontoIDOdbiorcy" ColumnName="KontoIDOdbiorcy" />
+                <ScalarProperty Name="SaldoPo" ColumnName="SaldoPo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="KontoId" ColumnName="KontoId" />
+                <ScalarProperty Name="Typ" ColumnName="Typ" />
+                <ScalarProperty Name="Tytul" ColumnName="Tytul" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="Nr_domu" ColumnName="Nr_domu" />
+                <ScalarProperty Name="Kod_pocztowy" ColumnName="Kod_pocztowy" />
+                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+                <ScalarProperty Name="Kwota" ColumnName="Kwota" />
+                <ScalarProperty Name="Przelew_ID" ColumnName="Przelew_ID" />
+                <ScalarProperty Name="NumerKontaOdbiorcy" ColumnName="NumerKontaOdbiorcy" />
+                <ScalarProperty Name="NumerKontaNadawcy" ColumnName="NumerKontaNadawcy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BankAppModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="BankAppModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Lokaty">
+            <EntityTypeMapping TypeName="BankAppModel.Lokaty">
+              <MappingFragment StoreEntitySet="Lokaty">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="KontoID" ColumnName="KontoID" />
+                <ScalarProperty Name="NaliczoneOdsetki" ColumnName="NaliczoneOdsetki" />
+                <ScalarProperty Name="DataNajNaliczeniaOdsetek" ColumnName="DataNajNaliczeniaOdsetek" />
+                <ScalarProperty Name="DataWyga" ColumnName="DataWyga" />
+                <ScalarProperty Name="DataOtwarcia" ColumnName="DataOtwarcia" />
+                <ScalarProperty Name="OprocentowanieLokaty" ColumnName="OprocentowanieLokaty" />
+                <ScalarProperty Name="OkresTrwania" ColumnName="OkresTrwania" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="LokataID" ColumnName="LokataID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kredyty">
+            <EntityTypeMapping TypeName="BankAppModel.Kredyty">
+              <MappingFragment StoreEntitySet="Kredyty">
+                <ScalarProperty Name="zostalorat" ColumnName="zostalorat" />
+                <ScalarProperty Name="oprocentowanie" ColumnName="oprocentowanie" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DataZamkniecia" ColumnName="DataZamkniecia" />
+                <ScalarProperty Name="DataZawarcia" ColumnName="DataZawarcia" />
+                <ScalarProperty Name="Okres" ColumnName="Okres" />
+                <ScalarProperty Name="Rata" ColumnName="Rata" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="KredytID" ColumnName="KredytID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

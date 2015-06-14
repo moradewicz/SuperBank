@@ -1,0 +1,76 @@
+﻿@model IEnumerable<BankApp_V2_MVC.Models.Konto>
+
+@{
+    ViewBag.Title = "Rachunki";
+}
+
+<h3>Rachunki</h3>
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-2 ">
+            <div class="btn-group btn-group-vertical ">
+                @Html.ActionLink(" Rachunki", "Index", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Dodaj nowy rachunek ", "Rachunki", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Wykonaj Przelew", "WykonajPrzelew", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Historia przelewów", "Historia", "Przelewy", null, new { @class = "btn btn-default" })
+
+            </div>
+        </div>
+        <div class="col-md-7 ">
+            @if (TempData["Message2"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">OK!:</span>
+                   Przelew wykonano
+
+                </div>
+            }
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Dostępne Rachunki :
+                    </h3>
+                </div>
+
+                <div class="panel-footer">
+                    @if (!Model.Any())
+                    {
+
+                        <a style=" color:darkblue">  Nie masz jeszcze żadnego konta  </a>
+                    }
+
+                    @foreach (var item in Model)
+                    {
+                       
+                        
+                        <a>Numer Konta: </a><a style=" color:#808080">@item.KontoId  </a>
+                        <a>Nazwa: </a><a style=" color:darkblue">@item.Nazwa  </a>
+                      
+                        <a>Saldo: </a>
+                        if (item.Saldo >= 0)
+                        {
+                            <a style=" color:green">@item.Saldo  </a>
+                        }
+                        else
+                        {
+                            <a style=" color:red">@item.Saldo  </a>
+
+                        }
+                        <a>PLN</a>
+                       
+                        <br/>
+                    }
+
+                </div>
+
+            </div>
+           @Html.ActionLink(" Dodaj nowy Rachunek", "DodajRachunek", "Przelewy", null, new { @class = "btn btn-default" })
+        </div>
+        <div class="col-md-4 ">
+        </div>
+    </div>
+</div>

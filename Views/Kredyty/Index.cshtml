@@ -1,0 +1,56 @@
+﻿@model  IEnumerable<BankApp_V2_MVC.Models.Kredyty>
+@{
+    ViewBag.Title = "Kredyty";
+}
+
+<h2>Kredyty</h2>
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-2 ">
+            <div class="btn-group btn-group-vertical ">
+                @Html.ActionLink("Kredyty", "Index", "Kredyty", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Dodaj nowy kredyt ", "DodajKredyt", "Kredyty", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+        <div class="col-md-10 ">
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Dostępne Kredyty :
+                    </h3>
+                </div>
+
+                <div class="panel-footer">
+                    @if (!Model.Any())
+                    {
+
+                        <a style=" color:darkblue">  Nie masz jeszcze żadnego kredytu  </a>
+                    }
+
+
+                    @foreach (var item in Model)
+                    {
+
+                        <a>Numer Kredytu: </a><a style=" color:#4800ff">@item.KredytID  </a>
+                        <a>Kwota: </a><a style=" color:#808080">@item.Saldo PLN</a>
+                        <a>Oprocentowanie: </a><a style=" color:#000000">@item.oprocentowanie  </a>
+
+                        <a>Saldo: </a><a style=" color:green">@item.Saldo  </a>    <a>PLN</a>
+                        <a>Pozostało rat: </a><a style=" color:green">@item.zostalorat  </a><a></a>
+                   
+                        <br />
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-4 ">
+        </div>
+    </div>
+</div>

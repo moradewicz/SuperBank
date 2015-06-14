@@ -1,0 +1,46 @@
+﻿@model BankApp_V2_MVC.Models.Zamkmnij
+    ViewBag.Title = "Zamknij Rachunek";
+}
+
+<h2>Zamknij Rachunek</h2>
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-2 ">
+            <div class="btn-group btn-group-vertical ">
+                @Html.ActionLink(" Rachunki", "Index", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Dodaj nowy rachunek ", "Rachunki", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Wykonaj Przelew", "WykonajPrzelew", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Historia przelewów", "Historia", "Przelewy", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+        <div class="col-md-10">
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+
+               
+
+                    @Html.LabelFor(m => Model.Rachunek, new { @class = "col-md-2 control-label" })
+
+
+
+                    @Html.DropDownList("DodajLokate.NumerKonta", ViewBag.DaneKontList as SelectList, "-- Wybierz kontot --", new { @class = "btn btn-default dropdown-toggle" })
+
+                    <br />
+
+                </div>
+
+
+
+                <input class="btn btn-default" type="submit" value="OK" />
+            }
+        </div>
+        <div class="col-md-4 ">
+        </div>
+    </div>
+</div>

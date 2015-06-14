@@ -1,0 +1,58 @@
+﻿@model  IEnumerable<BankApp_V2_MVC.Models.Lokaty>
+    @{
+    ViewBag.Title = "Lokaty";
+    }
+
+    <h2>Lokaty</h2>
+
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-2 ">
+                <div class="btn-group btn-group-vertical ">
+                    @Html.ActionLink("Lokaty", "Index", "Lokaty", null, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Dodaj nową lokate ", "DodajLokate", "Lokaty", null, new { @class = "btn btn-default" })
+                </div>
+            </div>
+            <div class="col-md-10 ">
+
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Dostępne Lokaty :
+                        </h3>
+                    </div>
+
+                    <div class="panel-footer">
+                        @if (!Model.Any())
+                    {
+
+                            <a style=" color:darkblue">  Nie masz jeszcze żadnej lokaty  </a>
+                    }
+
+
+                        @foreach (var item in Model)
+                    {
+
+                            <a>Numer Lokaty: </a><a style=" color:#4800ff">@item.LokataID  </a>
+                            <a>Numer Konta: </a><a style=" color:#808080">@item.KontoID </a>
+                            <a>Nazwa: </a><a style=" color:#000000">@item.Status  </a>
+
+                            <a>Saldo: </a><a style=" color:green">@item.Saldo  </a>    <a>PLN</a>
+                            <a>Odsetki: </a><a style=" color:green">@item.NaliczoneOdsetki  </a><a>PLN</a>
+                        if (@item.Status.StartsWith("Otwarta")) { 
+                            @Html.ActionLink("Zamknij lokatę", "Zamknij", "Lokaty", new { IDlokaty = @item.LokataID }, new { @class = "btn btn-xs btn-default" })
+                        }
+                            <br />
+}
+
+                    </div>
+
+                </div>
+               
+            </div>
+            <div class="col-md-4 ">
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Przelewy";
+}
+
+<h3>Przelewy</h3>
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-2 ">
+            <div class="btn-group btn-group-vertical ">
+
+                <button class="btn btn-default" type="button" > @Html.ActionLink(" Dodaj nowy Rachunek", "DodajRachunek", "Przelewy") </button>
+                
+                <button class="btn btn-default" type="button"> Wykonaj przelew</button>
+                <button class="btn btn-default" type="button">  Historia przelewów </button>
+
+            </div>
+        </div>
+        <div class="col-md-7 ">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Dostępne środki :
+                    </h3>
+                </div>
+
+                <div class="panel-footer">
+                  <a style=" color:green">  99999 PLN </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 ">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿@model BankApp_V2_MVC.Models.DodajLokateMultipleView
+@{
+    ViewBag.Title = "Dodaj Lokate terminową";
+}
+
+<h2>Dodaj Lokate terminową</h2>
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-2 ">
+            <div class="btn-group btn-group-vertical ">
+                @Html.ActionLink("Lokaty", "Index", "Lokaty", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Dodaj nową lokate ", "DodajLokate", "Lokaty", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+        <div class="col-md-10">
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+
+                    @if (TempData["MessageLokata"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            Nie masz wystarczających środków ! :( ,  Polecamy nasze kredyty
+
+                        </div>
+                    }
+
+                    @Html.LabelFor(m => Model.DodajLokate.Rachunek, new { @class = "col-md-2 control-label" })
+
+
+
+                    @Html.DropDownList("DodajLokate.NumerKonta", ViewBag.DaneKontList as SelectList, "-- Wybierz konto --", new { @class = "btn btn-default dropdown-toggle" })
+
+                    <br />
+
+                </div>
+
+
+
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => Model.DodajLokate.Okres, new { @class = "col-md-2 control-label" })
+
+
+
+        @Html.DropDownList("DodajLokate.Okres", ViewBag.Okres as SelectList, "-- Wybierz okres trwania lokaty  --", new { @class = "btn btn-default dropdown-toggle" })
+
+        <br />
+
+    </div>
+
+
+                <div>
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-inline">
+                        @Html.LabelFor(m => Model.DodajLokate.Kwota, new { @class = "col-md-2 control-label" })
+                        <div>
+                            @Html.TextBoxFor(m => Model.DodajLokate.Kwota, new { @class = "form-control" })
+                            PLN
+                        </div>
+                    </div>
+                </div>
+
+
+    <div>
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => Model.DodajLokate.Oprocentowanie, new { @class = "col-md-2 control-label" })
+            <div>
+                <p > 1 miesiąc - 3 %,  6 miesięcy - 5 %, 12 miesięcy - 8 %</p>
+            </div>
+        </div>
+    </div>
+    <input class="btn btn-default" type="submit" value="OK" />
+            }
+            </div>
+                <div class="col-md-4 ">
+                </div>
+            </div>
+        </div>

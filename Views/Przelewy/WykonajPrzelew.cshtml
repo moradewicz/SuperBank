@@ -1,0 +1,145 @@
+﻿@model BankApp_V2_MVC.Models.WykonajPrzelewMultipleView
+@{
+    ViewBag.Title = "WykonajPrzelew";
+}
+
+<h3>Wykonaj Przelew</h3>
+
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-2 ">
+            <div class="btn-group btn-group-vertical ">
+
+                @Html.ActionLink(" Rachunki", "Index", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Dodaj nowy rachunek ", "Rachunki", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Wykonaj Przelew", "WykonajPrzelew", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Historia przelewów", "Historia", "Przelewy", null, new { @class = "btn btn-default" })
+
+            </div>
+        </div>
+        <div class="col-md-10">
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+
+                    @if (TempData["Message"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            Nie masz wystarczających środków ! ( ͡° ʖ̯ ͡°) ,  Polecamy nasze kredyty
+
+                        </div>
+                    }
+                    
+                        @Html.LabelFor(m => Model.Przelew.Rachunek, new { @class = "col-md-2 control-label" })
+                        
+
+
+                        @Html.DropDownList("Przelew.DaneKont", ViewBag.DaneKontList as SelectList, "-- Wybierz konto --", new { @class = "btn btn-default dropdown-toggle" })
+                    
+                    <br />
+
+                </div>
+
+                <div>
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => Model.Przelew.NumerRachunkuOdbiorcy, new { @class = "col-md-2 control-label" })
+                        <div>
+                            @Html.TextBoxFor(m => Model.Przelew.NumerRachunkuOdbiorcy, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div>
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => Model.Przelew.ImieOdbiorcy, new { @class = "col-md-2 control-label" })
+                        <div>
+                            @Html.TextBoxFor(m => Model.Przelew.ImieOdbiorcy, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div>
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => Model.Przelew.NazwiskoOdbiorcy, new { @class = "col-md-2 control-label" })
+                        <div>
+                            @Html.TextBoxFor(m => Model.Przelew.NazwiskoOdbiorcy, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div>
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => Model.Przelew.Ulica, new { @class = "col-md-2 control-label" })
+                        <div>
+                            @Html.TextBoxFor(m => Model.Przelew.Ulica, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div>
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => Model.Przelew.nrdomu, new { @class = "col-md-2 control-label" })
+                        <div>
+                            @Html.TextBoxFor(m => Model.Przelew.nrdomu, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div>
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => Model.Przelew.Miasto, new { @class = "col-md-2 control-label" })
+                        <div>
+                            @Html.TextBoxFor(m => Model.Przelew.Miasto, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => Model.Przelew.Tytuł, new { @class = "col-md-2 control-label" })
+                        <div>
+                            @Html.TextBoxFor(m => Model.Przelew.Tytuł, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div>
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-inline">
+                        @Html.LabelFor(m => Model.Przelew.Kwota, new { @class = "col-md-2 control-label" })
+                        <div>
+                            @Html.TextBoxFor(m => Model.Przelew.Kwota, new { @class = "form-control" })
+                            PLN
+                        </div>
+                    </div>
+                </div>
+
+                <input class="btn btn-default" type="submit" value="OK" />
+
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@model BankApp_V2_MVC.Models.DodajRachunekViewModel
+
+@{
+    ViewBag.Title = "DodajRachunek";
+}
+
+<h3>DodajRachunek</h3>
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-2 ">
+            <div class="btn-group btn-group-vertical ">
+                @Html.ActionLink(" Rachunki", "Index", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Dodaj nowy rachunek ", "Rachunki", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Wykonaj Przelew", "WykonajPrzelew", "Przelewy", null, new { @class = "btn btn-default" })
+                @Html.ActionLink("Historia przelewów", "Historia", "Przelewy", null, new { @class = "btn btn-default" })
+
+            </div>
+        </div>
+        <div class="col-md-7 ">
+
+
+            <h4>
+                Nowy Rachunek
+            </h4>
+
+           @*Trzeba zrobic wysylanie danych z formularza do bazy danych  najpiej dodac dopliste w html*@
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <div>
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.NazwaKonta, new { @class = "col-md-2 control-label" })
+                        <div>
+                            @Html.TextBoxFor(m => m.NazwaKonta, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+    <input class="btn btn-default" type="submit" value="Dodaj" />
+
+            }
+        </div>
+    </div>
+</div>

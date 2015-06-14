@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Strona główna - Super Bank";
+}
+
+<div class="jumbotron">
+    <h2>Załóż swoje konto w Super Banku już teraz </h2>
+    <p class="lead">Jedno konto osobiste, a tak wiele możliwości</p>
+    <p> @Html.ActionLink("Załóż konto", "Register", "Account", null, new { @class = "btn btn-primary btn-lg" })</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Kredyty gotówkowe</h2>
+        <p>
+            - niskie oprocentowanie pożyczki dla każdego <br>
+            - gwarancja najniższej raty przez cały okres spłaty<br>
+            - zwrot wszystkich odsetek, jeśli spłacisz pożyczkę w ciągu 6 miesięcy
+        </p>
+        <p>@Html.ActionLink("Dowiedz się więcej ", "KredytyHome", "Home", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Lokaty</h2>
+        <p>
+           - oprocentowanie aż 2,75% (dla nowych środków) <br>
+           - niska kwota minimalna - tylko 1000 zł
+        </p>
+        <p>@Html.ActionLink("Dowiedz się więcej ", "LokatyHome", "Home", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Masz jakiś problem ?</h2>
+        <p> Twoje centrum pomocy</p>
+        <p>@Html.ActionLink("Dowiedz się więcej »", "Pomoc", "Home", null, new { @class = "btn btn-default" })</p>
+    </div>
+</div>

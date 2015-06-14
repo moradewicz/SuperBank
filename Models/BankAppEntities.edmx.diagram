@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a0fad73d428647fd90e6f1d4686477fc" Name="Diagram1">
+        <EntityTypeShape EntityType="BankAppModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankAppModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankAppModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankAppModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankAppModel.AspNetUsers" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankAppModel.DaneKlientow" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankAppModel.Konto" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankAppModel.Przelew" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankAppModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="BankAppModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BankAppModel.FK_AspNetUserLogins_DaneKlientow" ManuallyRouted="false" />
+        <AssociationConnector Association="BankAppModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BankAppModel.FK_Konto_DaneKlientow" ManuallyRouted="false" />
+        <AssociationConnector Association="BankAppModel.FK_Przelew_Konto1" ManuallyRouted="false" />
+        <AssociationConnector Association="BankAppModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BankAppModel.Lokaty" Width="1.5" PointX="10.375" PointY="5.75" />
+        <EntityTypeShape EntityType="BankAppModel.Kredyty" Width="1.5" PointX="10.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
